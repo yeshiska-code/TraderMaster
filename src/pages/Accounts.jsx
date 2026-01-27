@@ -73,9 +73,18 @@ export default function Accounts() {
   const [showForm, setShowForm] = useState(false);
   const [editingAccount, setEditingAccount] = useState(null);
 
+  const { data: user } = useQuery({
+    queryKey: ['currentUser'],
+    queryFn: () => base44.auth.me(),
+  });
+
   const { data: accounts = [], isLoading } = useQuery({
     queryKey: ['accounts'],
-    queryFn: () => base44.entities.TradingAccount.filter({}),
+    queryFn: async () => {
+      if (!user) return [];
+      return base44.entities.TradingAccount.filter({ user_id: user.id });
+    },
+    enabled: !!user,
   });
 
   const { data: trades = [] } = useQuery({
@@ -103,7 +112,6 @@ export default function Accounts() {
 
   const createMutation = useMutation({
     mutationFn: async (data) => {
-      const { data: user } = await base44.auth.me();
       const payload = { ...data, user_id: user.id };
       if (editingAccount?.id) {
         return base44.entities.TradingAccount.update(editingAccount.id, payload);

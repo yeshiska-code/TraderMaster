@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
@@ -130,11 +130,12 @@ export default function Journal() {
 
   const saveMutation = useMutation({
     mutationFn: async (data) => {
+      const payload = { ...data, user_id: user.id };
       const existingLog = activeTab === 'pre' ? preSessionLog : postSessionLog;
       if (existingLog) {
-        return base44.entities.EmotionalLog.update(existingLog.id, data);
+        return base44.entities.EmotionalLog.update(existingLog.id, payload);
       }
-      return base44.entities.EmotionalLog.create(data);
+      return base44.entities.EmotionalLog.create(payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['emotionalLogs', dateKey] });
