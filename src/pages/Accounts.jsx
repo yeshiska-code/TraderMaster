@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
@@ -102,10 +102,12 @@ export default function Accounts() {
 
   const createMutation = useMutation({
     mutationFn: async (data) => {
+      const { data: user } = await base44.auth.me();
+      const payload = { ...data, user_id: user.id };
       if (editingAccount?.id) {
-        return base44.entities.TradingAccount.update(editingAccount.id, data);
+        return base44.entities.TradingAccount.update(editingAccount.id, payload);
       }
-      return base44.entities.TradingAccount.create(data);
+      return base44.entities.TradingAccount.create(payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['accounts'] });

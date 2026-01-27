@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useMutation } from '@tanstack/react-query';
 import { format } from 'date-fns';
@@ -90,6 +90,7 @@ export default function TradeForm({ trade, accounts, strategies, onSuccess, onCa
     mutationFn: async (data) => {
       const payload = {
         ...data,
+        source: 'manual',
         entry_time: data.entry_time?.toISOString(),
         exit_time: data.exit_time?.toISOString(),
         entry_price: parseFloat(data.entry_price),
