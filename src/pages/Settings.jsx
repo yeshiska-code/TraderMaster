@@ -179,10 +179,10 @@ export default function Settings() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="beginner">Beginner (< 1 year)</SelectItem>
-                    <SelectItem value="intermediate">Intermediate (1-3 years)</SelectItem>
-                    <SelectItem value="advanced">Advanced (3-5 years)</SelectItem>
-                    <SelectItem value="professional">Professional (5+ years)</SelectItem>
+                    <SelectItem value="beginner">Beginner (under 1 year)</SelectItem>
+                      <SelectItem value="intermediate">Intermediate (1-3 years)</SelectItem>
+                      <SelectItem value="advanced">Advanced (3-5 years)</SelectItem>
+                      <SelectItem value="professional">Professional (5+ years)</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
