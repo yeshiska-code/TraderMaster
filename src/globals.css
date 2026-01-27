@@ -136,6 +136,30 @@
   .scrollbar-thin::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
   }
+
+  /* Premium Button Hover Effects */
+  .btn-premium-hover {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
+  }
+
+  .btn-premium-hover:hover:not(:disabled) {
+    @apply scale-[1.02];
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3);
+  }
+
+  .btn-premium-hover:active:not(:disabled) {
+    @apply scale-[0.98];
+  }
+
+  .btn-white-premium {
+    @apply bg-white text-black font-semibold;
+  }
+
+  .btn-white-premium:hover:not(:disabled) {
+    background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
+    color: white !important;
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+  }
 }
 
 @keyframes float {
@@ -146,6 +170,15 @@
 @keyframes glow {
   from { box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
   to { box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
+}
+
+@keyframes premium-glow {
+  0%, 100% { 
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.8), 0 0 40px rgba(123, 44, 255, 0.5); 
+  }
 }
 
 /* Custom Chart Styling */
@@ -176,6 +209,23 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   @apply ring-2 ring-emerald-500/20 border-emerald-500/50;
+}
+
+/* Global Button Premium Styling */
+button:not(:disabled) {
+  @apply transition-all duration-300 ease-out;
+}
+
+button:not(:disabled):hover {
+  @apply scale-[1.02];
+}
+
+button:not(:disabled):active {
+  @apply scale-[0.98];
+}
+
+button:disabled {
+  @apply cursor-not-allowed opacity-50;
 }
 
 /* Number Input Arrows */
