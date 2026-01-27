@@ -4,6 +4,10 @@ import Trades from './pages/Trades';
 import Calendar from './pages/Calendar';
 import Analytics from './pages/Analytics';
 import Journal from './pages/Journal';
+import Strategies from './pages/Strategies';
+import AIAgent from './pages/AIAgent';
+import Settings from './pages/Settings';
+import Accounts from './pages/Accounts';
 import __Layout from './Layout.jsx';
 
 
@@ -14,6 +18,10 @@ export const PAGES = {
     "Calendar": Calendar,
     "Analytics": Analytics,
     "Journal": Journal,
+    "Strategies": Strategies,
+    "AIAgent": AIAgent,
+    "Settings": Settings,
+    "Accounts": Accounts,
 }
 
 export const pagesConfig = {
