@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { base44 } from '@/api/base44Client';
@@ -228,7 +228,7 @@ export default function Layout({ children, currentPageName }) {
                 <span className="text-sm font-medium text-violet-300">Upgrade to Pro</span>
               </div>
               <p className="text-xs text-gray-400 mb-2">Unlock AI insights & advanced analytics</p>
-              <Button size="sm" className="w-full bg-violet-500 hover:bg-violet-600 text-white text-xs">
+              <Button size="sm" className="w-full bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600 text-white text-xs font-semibold">
                 Upgrade Now
               </Button>
             </div>
