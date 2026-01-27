@@ -228,6 +228,46 @@ button:disabled {
   @apply cursor-not-allowed opacity-50;
 }
 
+/* CRITICAL: White/Light Background Button Text Override */
+button[class*="bg-white"]:not([class*="bg-white/"]),
+button[class*="bg-gray-50"],
+button[class*="bg-gray-100"],
+button[class*="bg-slate-50"],
+button[class*="bg-slate-100"],
+.bg-white button,
+.btn-white-premium {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+button[class*="bg-white"]:not([class*="bg-white/"]):hover:not(:disabled),
+button[class*="bg-gray-50"]:hover:not(:disabled),
+button[class*="bg-gray-100"]:hover:not(:disabled),
+.btn-white-premium:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
+  color: white !important;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.6) !important;
+}
+
+/* Gradient buttons maintain white text on hover */
+button[class*="gradient"]:hover:not(:disabled),
+button[class*="from-"]:hover:not(:disabled) {
+  color: white !important;
+}
+
+/* Dark background buttons always white text */
+button[class*="bg-black"],
+button[class*="bg-gray-900"],
+button[class*="bg-slate-900"],
+button[class*="bg-slate-800"] {
+  color: white !important;
+}
+
+/* Ensure neon gradient hovers always show on primary buttons */
+button:not(:disabled):hover {
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3);
+}
+
 /* Number Input Arrows */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

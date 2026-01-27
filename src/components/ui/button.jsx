@@ -10,13 +10,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-gradient-to-r hover:from-[#00f5ff] hover:to-[#7b2cff] hover:shadow-[0_0_12px_rgba(0,245,255,0.6)]",
+          "bg-primary text-primary-foreground shadow hover:bg-gradient-to-r hover:from-[#00f5ff] hover:to-[#7b2cff] hover:text-white hover:shadow-[0_0_12px_rgba(0,245,255,0.6)]",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-600 hover:shadow-[0_0_12px_rgba(255,0,100,0.6)]",
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-600 hover:text-white hover:shadow-[0_0_12px_rgba(255,0,100,0.6)]",
         outline:
           "border border-input bg-background shadow-sm hover:bg-gradient-to-r hover:from-[#00f5ff]/10 hover:to-[#7b2cff]/10 hover:border-[#00f5ff]",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700",
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 hover:text-white",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline hover:scale-100",
       },
