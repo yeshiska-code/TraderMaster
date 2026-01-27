@@ -169,11 +169,45 @@ export default function Trades() {
           <p className="text-gray-400 mt-1">Track and analyze all your trades</p>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="border-white/20 text-gray-300">
+          <Button 
+            variant="outline" 
+            className="border-white/20 text-gray-300"
+            onClick={() => document.getElementById('csv-upload').click()}
+          >
             <Upload className="w-4 h-4 mr-2" />
             Import
           </Button>
-          <Button variant="outline" className="border-white/20 text-gray-300">
+          <input
+            id="csv-upload"
+            type="file"
+            accept=".csv"
+            className="hidden"
+            onChange={async (e) => {
+              const file = e.target.files?.[0];
+              if (file && accounts.length > 0) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('account_id', accounts[0].id);
+                const response = await base44.functions.invoke('importTradesCSV', formData);
+                queryClient.invalidateQueries({ queryKey: ['trades'] });
+                alert(`Imported ${response.data.imported} trades`);
+              }
+            }}
+          />
+          <Button 
+            variant="outline" 
+            className="border-white/20 text-gray-300"
+            onClick={async () => {
+              const response = await base44.functions.invoke('exportTrades', { filters: {} });
+              const blob = new Blob([response.data], { type: 'text/csv' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `trades_${new Date().toISOString().split('T')[0]}.csv`;
+              a.click();
+              URL.revokeObjectURL(url);
+            }}
+          >
             <Download className="w-4 h-4 mr-2" />
             Export
           </Button>

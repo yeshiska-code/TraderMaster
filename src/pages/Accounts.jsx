@@ -204,6 +204,20 @@ export default function Accounts() {
         </Button>
       </div>
 
+      {/* Tradovate Connection */}
+      <div className="glass-card p-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-lg font-semibold text-white">Tradovate Integration</h2>
+            <p className="text-sm text-gray-400">Connect your Tradovate account to auto-sync trades</p>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <TradovateConnectButton environment="demo" />
+          <TradovateConnectButton environment="live" />
+        </div>
+      </div>
+
       {/* Accounts Grid */}
       {isLoading ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
