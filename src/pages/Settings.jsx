@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
@@ -39,7 +39,7 @@ export default function Settings() {
 
   const [formData, setFormData] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (user && !formData) {
       setFormData({
         full_name: user.full_name || '',
