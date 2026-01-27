@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from '../utils';
 import { base44 } from '@/api/base44Client';
@@ -99,7 +99,7 @@ export default function Trades() {
   });
 
   // Filter and sort trades
-  const filteredTrades = React.useMemo(() => {
+  const filteredTrades = useMemo(() => {
     let result = [...trades];
 
     // Search
@@ -151,7 +151,7 @@ export default function Trades() {
   const uniqueSymbols = [...new Set(trades.map(t => t.symbol).filter(Boolean))];
 
   // Calculate summary stats
-  const summaryStats = React.useMemo(() => {
+  const summaryStats = useMemo(() => {
     const closed = filteredTrades.filter(t => t.status === 'closed');
     const totalPnL = closed.reduce((sum, t) => sum + (t.net_pnl || 0), 0);
     const wins = closed.filter(t => (t.net_pnl || 0) > 0).length;
