@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery } from '@tanstack/react-query';
 import { format, subDays, subMonths, startOfMonth, endOfMonth, parseISO } from 'date-fns';
@@ -331,16 +331,16 @@ export default function Analytics() {
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="bg-white/5 p-1">
-          <TabsTrigger value="overview" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-black">
+          <TabsTrigger value="overview" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white">
             Overview
           </TabsTrigger>
-          <TabsTrigger value="time" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-black">
+          <TabsTrigger value="time" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white">
             Time Analysis
           </TabsTrigger>
-          <TabsTrigger value="symbols" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-black">
+          <TabsTrigger value="symbols" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white">
             Symbols
           </TabsTrigger>
-          <TabsTrigger value="distribution" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-black">
+          <TabsTrigger value="distribution" className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white">
             Distribution
           </TabsTrigger>
         </TabsList>

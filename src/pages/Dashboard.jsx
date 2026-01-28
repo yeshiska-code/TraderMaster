@@ -150,7 +150,7 @@ export default function Dashboard() {
         </div>
         <div className="flex items-center gap-3">
           <Link to={createPageUrl('Trades') + '?action=new'}>
-            <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-semibold">
+            <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold">
               <TrendingUp className="w-4 h-4 mr-2" />
               Log Trade
             </Button>

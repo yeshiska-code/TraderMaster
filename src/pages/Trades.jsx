@@ -213,7 +213,7 @@ export default function Trades() {
           </Button>
           <Button 
             onClick={() => setShowNewTrade(true)}
-            className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-semibold"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold"
           >
             <Plus className="w-4 h-4 mr-2" />
             New Trade

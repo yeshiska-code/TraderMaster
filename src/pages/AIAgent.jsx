@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
@@ -218,7 +218,7 @@ Use markdown formatting for better readability. Keep response concise but valuab
                   <div className={cn(
                     "max-w-[80%] rounded-2xl px-4 py-3",
                     message.role === 'user' 
-                      ? "bg-gradient-to-r from-emerald-500 to-cyan-500 text-black" 
+                      ? "bg-gradient-to-r from-emerald-500 to-cyan-500 text-white" 
                       : message.isError 
                       ? "bg-red-500/20 border border-red-500/30"
                       : "bg-white/5 border border-white/10"

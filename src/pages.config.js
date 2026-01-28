@@ -1,33 +1,33 @@
-import Landing from './pages/Landing';
-import Dashboard from './pages/Dashboard';
-import Trades from './pages/Trades';
-import Calendar from './pages/Calendar';
-import Analytics from './pages/Analytics';
-import Journal from './pages/Journal';
-import Strategies from './pages/Strategies';
 import AIAgent from './pages/AIAgent';
-import Settings from './pages/Settings';
 import Accounts from './pages/Accounts';
-import TradeDetail from './pages/TradeDetail';
-import CoachDashboard from './pages/CoachDashboard';
 import AdminPanel from './pages/AdminPanel';
+import Analytics from './pages/Analytics';
+import Calendar from './pages/Calendar';
+import CoachDashboard from './pages/CoachDashboard';
+import Dashboard from './pages/Dashboard';
+import Journal from './pages/Journal';
+import Landing from './pages/Landing';
+import Settings from './pages/Settings';
+import Strategies from './pages/Strategies';
+import TradeDetail from './pages/TradeDetail';
+import Trades from './pages/Trades';
 import __Layout from './Layout.jsx';
 
 
 export const PAGES = {
-    "Landing": Landing,
-    "Dashboard": Dashboard,
-    "Trades": Trades,
-    "Calendar": Calendar,
-    "Analytics": Analytics,
-    "Journal": Journal,
-    "Strategies": Strategies,
     "AIAgent": AIAgent,
-    "Settings": Settings,
     "Accounts": Accounts,
-    "TradeDetail": TradeDetail,
-    "CoachDashboard": CoachDashboard,
     "AdminPanel": AdminPanel,
+    "Analytics": Analytics,
+    "Calendar": Calendar,
+    "CoachDashboard": CoachDashboard,
+    "Dashboard": Dashboard,
+    "Journal": Journal,
+    "Landing": Landing,
+    "Settings": Settings,
+    "Strategies": Strategies,
+    "TradeDetail": TradeDetail,
+    "Trades": Trades,
 }
 
 export const pagesConfig = {

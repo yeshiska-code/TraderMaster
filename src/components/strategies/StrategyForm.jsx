@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useMutation } from '@tanstack/react-query';
 import { Plus, X, Trash2 } from 'lucide-react';
@@ -195,7 +195,7 @@ export default function StrategyForm({ strategy, onSuccess, onCancel }) {
                   size="sm"
                   onClick={() => toggleArrayItem('asset_classes', ac)}
                   className={cn(
-                    formData.asset_classes.includes(ac) && "bg-emerald-500 text-black"
+                   formData.asset_classes.includes(ac) && "bg-emerald-500 text-white"
                   )}
                 >
                   {ac.toUpperCase()}
@@ -215,7 +215,7 @@ export default function StrategyForm({ strategy, onSuccess, onCancel }) {
                   size="sm"
                   onClick={() => toggleArrayItem('sessions', session)}
                   className={cn(
-                    formData.sessions.includes(session) && "bg-emerald-500 text-black"
+                   formData.sessions.includes(session) && "bg-emerald-500 text-white"
                   )}
                 >
                   {session.replace(/_/g, ' ').toUpperCase()}
@@ -492,7 +492,7 @@ export default function StrategyForm({ strategy, onSuccess, onCancel }) {
         </Button>
         <Button
           type="submit"
-          className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-black"
+          className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white"
           disabled={createMutation.isPending}
         >
           {createMutation.isPending ? 'Saving...' : (strategy?.id ? 'Update Strategy' : 'Create Strategy')}

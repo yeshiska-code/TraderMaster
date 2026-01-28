@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { 
@@ -117,7 +117,7 @@ export default function Strategies() {
         </div>
         <Button
           onClick={() => setShowForm(true)}
-          className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-black font-semibold"
+          className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold"
         >
           <Plus className="w-4 h-4 mr-2" />
           New Strategy
@@ -155,7 +155,7 @@ export default function Strategies() {
           <p className="text-gray-400 mb-6">Create your first strategy to start tracking its performance</p>
           <Button
             onClick={() => setShowForm(true)}
-            className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-black"
+            className="bg-gradient-to-r from-emerald-500 to-cyan-500 text-white"
           >
             <Plus className="w-4 h-4 mr-2" />
             Create Strategy
