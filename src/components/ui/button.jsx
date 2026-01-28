@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline hover:scale-100",
         white:
-          "bg-white text-black border border-slate-200 shadow-sm hover:bg-gradient-to-r hover:from-[#00f5ff] hover:to-[#7b2cff] hover:text-white hover:shadow-[0_0_12px_rgba(0,245,255,0.6)]",
+          "bg-white text-black font-semibold border border-slate-200 shadow-sm hover:bg-gradient-to-r hover:from-[#00f5ff] hover:to-[#7b2cff] hover:text-white hover:shadow-[0_0_12px_rgba(0,245,255,0.6)]",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -39,16 +39,30 @@ const buttonVariants = cva(
 const Button = React.forwardRef(({ className = "", variant, size, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : "button"
   
-  // Automatic safety override: bg-white without text-* class → inject text-black
+  // CRITICAL: Automatic safety override for white background buttons
   const hasWhiteBg = /\bbg-white\b/.test(className);
+  const hasGrayBg = /\bbg-gray-(50|100)\b/.test(className);
+  const hasSlateBg = /\bbg-slate-(50|100)\b/.test(className);
+  const hasLightBg = hasWhiteBg || hasGrayBg || hasSlateBg;
+  
   const hasTextClass = /\btext-[\w-]+\b/.test(className);
-  const autoTextFix = hasWhiteBg && !hasTextClass ? "text-black font-semibold" : "";
+  
+  // If light background detected without explicit text class → force black text
+  const autoTextFix = hasLightBg && !hasTextClass ? "!text-black !font-semibold" : "";
+  
+  // Build final className with proper override order
+  const finalClassName = cn(
+    buttonVariants({ variant, size }), 
+    className,
+    autoTextFix
+  );
   
   return (
-    (<Comp
-      className={cn(buttonVariants({ variant, size }), autoTextFix, className)}
+    <Comp
+      className={finalClassName}
       ref={ref}
-      {...props} />)
+      {...props} 
+    />
   );
 })
 Button.displayName = "Button"

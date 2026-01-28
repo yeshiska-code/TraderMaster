@@ -1,4 +1,3 @@
-css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -162,34 +161,6 @@ css
     color: #ffffff !important;
     box-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
   }
-
-  /* CRITICAL: White/Light Background Buttons = BLACK TEXT */
-  button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]),
-  button[class*="bg-gray-50"]:not([class*="gradient"]),
-  button[class*="bg-gray-100"]:not([class*="gradient"]),
-  button[class*="bg-slate-50"]:not([class*="gradient"]),
-  button[class*="bg-slate-100"]:not([class*="gradient"]),
-  button[style*="background: white"],
-  button[style*="background: #fff"],
-  button[style*="background-color: white"],
-  button[style*="background-color: #fff"],
-  .bg-white > button:not([class*="gradient"]),
-  .bg-gray-50 > button:not([class*="gradient"]),
-  .bg-gray-100 > button:not([class*="gradient"]) {
-    color: #000000 !important;
-    font-weight: 600 !important;
-  }
-
-  /* Premium Neon Gradient Hover for Light Buttons */
-  button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):hover:not(:disabled),
-  button[class*="bg-gray-50"]:not([class*="gradient"]):hover:not(:disabled),
-  button[class*="bg-gray-100"]:not([class*="gradient"]):hover:not(:disabled),
-  button[class*="bg-slate-50"]:not([class*="gradient"]):hover:not(:disabled),
-  button[class*="bg-slate-100"]:not([class*="gradient"]):hover:not(:disabled) {
-    background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
-    color: #ffffff !important;
-    box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3) !important;
-  }
 }
 
 @keyframes float {
@@ -281,4 +252,34 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"]:hover::-webkit-inner-spin-button,
 input[type="number"]:hover::-webkit-outer-spin-button {
   opacity: 1;
+}
+
+/* ========================================
+   CRITICAL PRODUCTION FIX - MAXIMUM PRIORITY
+   White Background Buttons = Black Text
+   ======================================== */
+
+/* Override ALL button text colors for white/light backgrounds */
+button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]),
+button[class*="bg-gray-50"]:not([class*="gradient"]),
+button[class*="bg-gray-100"]:not([class*="gradient"]),
+button[class*="bg-slate-50"]:not([class*="gradient"]),
+button[class*="bg-slate-100"]:not([class*="gradient"]),
+button[style*="background: white"],
+button[style*="background: #fff"],
+button[style*="background-color: white"],
+button[style*="background-color: #fff"] {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+/* Premium Neon Gradient Hover - White Buttons Transform */
+button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):hover:not(:disabled),
+button[class*="bg-gray-50"]:not([class*="gradient"]):hover:not(:disabled),
+button[class*="bg-gray-100"]:not([class*="gradient"]):hover:not(:disabled),
+button[class*="bg-slate-50"]:not([class*="gradient"]):hover:not(:disabled),
+button[class*="bg-slate-100"]:not([class*="gradient"]):hover:not(:disabled) {
+  background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3) !important;
 }
