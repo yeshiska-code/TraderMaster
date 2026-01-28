@@ -152,13 +152,27 @@
   }
 
   .btn-white-premium {
-    @apply bg-white text-black font-semibold;
+    @apply bg-white font-semibold;
+    color: #000000 !important;
   }
 
   .btn-white-premium:hover:not(:disabled) {
     background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
-    color: white !important;
+    color: #ffffff !important;
     box-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
+  }
+
+  /* CRITICAL: White/Light Background Buttons = BLACK TEXT (Default State) */
+  button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):not(:hover):not(:disabled),
+  button[style*="background: white"]:not(:hover):not(:disabled),
+  button[style*="background: #fff"]:not(:hover):not(:disabled),
+  button[style*="background-color: white"]:not(:hover):not(:disabled),
+  button[style*="background-color: #fff"]:not(:hover):not(:disabled),
+  .bg-white > button:not([class*="gradient"]):not(:hover):not(:disabled),
+  .bg-gray-50 > button:not([class*="gradient"]):not(:hover):not(:disabled),
+  .bg-gray-100 > button:not([class*="gradient"]):not(:hover):not(:disabled) {
+    color: #000000 !important;
+    font-weight: 600 !important;
   }
 }
 
