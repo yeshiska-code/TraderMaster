@@ -19,6 +19,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-gradient-to-r hover:from-slate-600 hover:to-slate-700 hover:text-white",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline hover:scale-100",
+        white:
+          "bg-white text-black border border-slate-200 shadow-sm hover:bg-gradient-to-r hover:from-[#00f5ff] hover:to-[#7b2cff] hover:text-white hover:shadow-[0_0_12px_rgba(0,245,255,0.6)]",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -34,11 +36,17 @@ const buttonVariants = cva(
   }
 )
 
-const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+const Button = React.forwardRef(({ className = "", variant, size, asChild = false, ...props }, ref) => {
   const Comp = asChild ? Slot : "button"
+  
+  // Automatic safety override: bg-white without text-* class → inject text-black
+  const hasWhiteBg = /\bbg-white\b/.test(className);
+  const hasTextClass = /\btext-[\w-]+\b/.test(className);
+  const autoTextFix = hasWhiteBg && !hasTextClass ? "text-black font-semibold" : "";
+  
   return (
     (<Comp
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), autoTextFix, className)}
       ref={ref}
       {...props} />)
   );
