@@ -53,6 +53,13 @@
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  /* CRITICAL: Prevent color inheritance on buttons */
+  button,
+  [role="button"],
+  a[role="button"] {
+    color: hsl(var(--foreground));
+  }
 }
 
 @layer utilities {
@@ -259,12 +266,18 @@ input[type="number"]:hover::-webkit-outer-spin-button {
    White Background Buttons = Black Text
    ======================================== */
 
-/* Override ALL button text colors for white/light backgrounds */
+/* Override ALL button text colors for white/light backgrounds - DEFAULT STATE */
 button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]),
 button[class*="bg-gray-50"]:not([class*="gradient"]),
 button[class*="bg-gray-100"]:not([class*="gradient"]),
 button[class*="bg-slate-50"]:not([class*="gradient"]),
 button[class*="bg-slate-100"]:not([class*="gradient"]),
+a[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]),
+a[class*="bg-gray-50"]:not([class*="gradient"]),
+a[class*="bg-gray-100"]:not([class*="gradient"]),
+[role="button"][class*="bg-white"]:not([class*="gradient"]),
+[role="button"][class*="bg-gray-50"]:not([class*="gradient"]),
+[role="button"][class*="bg-gray-100"]:not([class*="gradient"]),
 button[style*="background: white"],
 button[style*="background: #fff"],
 button[style*="background-color: white"],
@@ -278,7 +291,13 @@ button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):hov
 button[class*="bg-gray-50"]:not([class*="gradient"]):hover:not(:disabled),
 button[class*="bg-gray-100"]:not([class*="gradient"]):hover:not(:disabled),
 button[class*="bg-slate-50"]:not([class*="gradient"]):hover:not(:disabled),
-button[class*="bg-slate-100"]:not([class*="gradient"]):hover:not(:disabled) {
+button[class*="bg-slate-100"]:not([class*="gradient"]):hover:not(:disabled),
+a[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):hover:not(:disabled),
+a[class*="bg-gray-50"]:not([class*="gradient"]):hover:not(:disabled),
+a[class*="bg-gray-100"]:not([class*="gradient"]):hover:not(:disabled),
+[role="button"][class*="bg-white"]:not([class*="gradient"]):hover,
+[role="button"][class*="bg-gray-50"]:not([class*="gradient"]):hover,
+[role="button"][class*="bg-gray-100"]:not([class*="gradient"]):hover {
   background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
   color: #ffffff !important;
   box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3) !important;
