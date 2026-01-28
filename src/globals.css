@@ -1,3 +1,4 @@
+css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -162,17 +163,32 @@
     box-shadow: 0 0 12px rgba(0, 245, 255, 0.6);
   }
 
-  /* CRITICAL: White/Light Background Buttons = BLACK TEXT (Default State) */
-  button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):not(:hover):not(:disabled),
-  button[style*="background: white"]:not(:hover):not(:disabled),
-  button[style*="background: #fff"]:not(:hover):not(:disabled),
-  button[style*="background-color: white"]:not(:hover):not(:disabled),
-  button[style*="background-color: #fff"]:not(:hover):not(:disabled),
-  .bg-white > button:not([class*="gradient"]):not(:hover):not(:disabled),
-  .bg-gray-50 > button:not([class*="gradient"]):not(:hover):not(:disabled),
-  .bg-gray-100 > button:not([class*="gradient"]):not(:hover):not(:disabled) {
+  /* CRITICAL: White/Light Background Buttons = BLACK TEXT */
+  button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]),
+  button[class*="bg-gray-50"]:not([class*="gradient"]),
+  button[class*="bg-gray-100"]:not([class*="gradient"]),
+  button[class*="bg-slate-50"]:not([class*="gradient"]),
+  button[class*="bg-slate-100"]:not([class*="gradient"]),
+  button[style*="background: white"],
+  button[style*="background: #fff"],
+  button[style*="background-color: white"],
+  button[style*="background-color: #fff"],
+  .bg-white > button:not([class*="gradient"]),
+  .bg-gray-50 > button:not([class*="gradient"]),
+  .bg-gray-100 > button:not([class*="gradient"]) {
     color: #000000 !important;
     font-weight: 600 !important;
+  }
+
+  /* Premium Neon Gradient Hover for Light Buttons */
+  button[class*="bg-white"]:not([class*="bg-white/"]):not([class*="gradient"]):hover:not(:disabled),
+  button[class*="bg-gray-50"]:not([class*="gradient"]):hover:not(:disabled),
+  button[class*="bg-gray-100"]:not([class*="gradient"]):hover:not(:disabled),
+  button[class*="bg-slate-50"]:not([class*="gradient"]):hover:not(:disabled),
+  button[class*="bg-slate-100"]:not([class*="gradient"]):hover:not(:disabled) {
+    background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3) !important;
   }
 }
 
@@ -242,26 +258,6 @@ button:disabled {
   @apply cursor-not-allowed opacity-50;
 }
 
-/* CRITICAL: Remove white backgrounds - convert to system theme */
-button[class*="bg-white"]:not([class*="bg-white/"]),
-button[class*="bg-gray-50"],
-button[class*="bg-gray-100"],
-button[class*="bg-slate-50"],
-button[class*="bg-slate-100"] {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)) !important;
-  border: 1px solid rgba(16, 185, 129, 0.3) !important;
-  color: rgb(52, 211, 153) !important;
-  font-weight: 600 !important;
-}
-
-button[class*="bg-white"]:not([class*="bg-white/"]):hover:not(:disabled),
-button[class*="bg-gray-50"]:hover:not(:disabled),
-button[class*="bg-gray-100"]:hover:not(:disabled) {
-  background: linear-gradient(135deg, #00f5ff, #7b2cff) !important;
-  color: white !important;
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.6) !important;
-}
-
 /* Gradient buttons maintain white text on hover */
 button[class*="gradient"]:hover:not(:disabled),
 button[class*="from-"]:hover:not(:disabled) {
@@ -274,11 +270,6 @@ button[class*="bg-gray-900"],
 button[class*="bg-slate-900"],
 button[class*="bg-slate-800"] {
   color: white !important;
-}
-
-/* Ensure neon gradient hovers always show on primary buttons */
-button:not(:disabled):hover {
-  box-shadow: 0 0 12px rgba(0, 245, 255, 0.6), 0 0 24px rgba(123, 44, 255, 0.3);
 }
 
 /* Number Input Arrows */
