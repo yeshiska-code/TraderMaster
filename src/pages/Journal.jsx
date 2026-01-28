@@ -213,7 +213,7 @@ export default function Journal() {
             <ChevronLeft className="w-4 h-4" />
           </Button>
           <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 min-w-[180px] text-center">
-            <p className="text-black font-medium">{format(currentDate, 'EEEE')}</p>
+            <p className="text-white font-medium">{format(currentDate, 'EEEE')}</p>
             <p className="text-sm text-gray-400">{format(currentDate, 'MMMM d, yyyy')}</p>
           </div>
           <Button variant="outline" size="icon" onClick={goToNextDay} className="border-white/10">
@@ -410,7 +410,9 @@ export default function Journal() {
                     size="sm"
                     onClick={() => toggleEmotion(emotion)}
                     className={cn(
-                      formData.emotions.includes(emotion) && "bg-emerald-500/80 hover:bg-emerald-600 border-0"
+                      formData.emotions.includes(emotion) 
+                        ? "bg-emerald-500/80 hover:bg-emerald-600 border-0 text-white" 
+                        : "text-white"
                     )}
                   >
                     {emotion.replace(/_/g, ' ')}
@@ -431,7 +433,9 @@ export default function Journal() {
                     size="sm"
                     onClick={() => toggleFactor(factor)}
                     className={cn(
-                      formData.external_factors.includes(factor) && "bg-amber-500/80 hover:bg-amber-600 border-0"
+                      formData.external_factors.includes(factor) 
+                        ? "bg-amber-500/80 hover:bg-amber-600 border-0 text-white" 
+                        : "text-white"
                     )}
                   >
                     {factor.replace(/_/g, ' ')}
