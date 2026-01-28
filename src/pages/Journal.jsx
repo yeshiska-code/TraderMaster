@@ -213,7 +213,7 @@ export default function Journal() {
             <ChevronLeft className="w-4 h-4" />
           </Button>
           <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 min-w-[180px] text-center">
-            <p className="text-white font-medium">{format(currentDate, 'EEEE')}</p>
+            <p className="text-black font-medium">{format(currentDate, 'EEEE')}</p>
             <p className="text-sm text-gray-400">{format(currentDate, 'MMMM d, yyyy')}</p>
           </div>
           <Button variant="outline" size="icon" onClick={goToNextDay} className="border-white/10">
